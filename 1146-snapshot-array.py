@@ -8,6 +8,7 @@ class Node:
 class LinkedList:
     def __init__(self, head):
         self.head = head
+        self.tail = None
 
     def get(self, i: int) -> int:
         at = 0
@@ -20,13 +21,16 @@ class LinkedList:
         return curr.n
 
     def insertIfDifferent(self, n: int) -> None:
-        curr = self.head
-        while curr.next is not None:
-            curr = curr.next
+        curr = self.tail
+        if curr is None:
+            curr = self.head
+            while curr.next is not None:
+                curr = curr.next
         if curr.n == n:
             curr.snaps += 1
         else:
             curr.next = Node(n)
+            self.tail = curr.next
 
 
 class SnapshotArray:
