@@ -2,8 +2,8 @@ class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         unchecked = Counter(nums)
         longest = 0
-        for n in nums:
-            del unchecked[n]
+        while len(unchecked) > 0:
+            n = unchecked.popitem()[0]
             x = n + 1
             y = n - 1
             streak = 1
