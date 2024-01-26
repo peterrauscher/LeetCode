@@ -14,4 +14,6 @@ class Solution:
                     i += 2
                 else:
                     i += 1
-        return n <= 0
+            if n == 0:
+                return True
+        return False
