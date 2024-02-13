@@ -7,23 +7,17 @@ class MyQueue:
         self.diamondhands_doge = deque()
 
     def push(self, x: int) -> None:
+        while self.stack:
+            self.diamondhands_doge.append(self.stack.pop())
         self.stack.append(x)
+        while self.diamondhands_doge:
+            self.stack.append(self.diamondhands_doge.pop())
         
     def pop(self) -> int:
-        while self.stack:
-            self.diamondhands_doge.append(self.stack.pop())
-        res = self.diamondhands_doge.pop()
-        while self.diamondhands_doge:
-            self.stack.append(self.diamondhands_doge.pop())
-        return res
+        return self.stack.pop()
 
     def peek(self) -> int:
-        while self.stack:
-            self.diamondhands_doge.append(self.stack.pop())
-        res = self.diamondhands_doge[-1]
-        while self.diamondhands_doge:
-            self.stack.append(self.diamondhands_doge.pop())
-        return res
+        return self.stack[-1]
 
     def empty(self) -> bool:
         return not self.stack
