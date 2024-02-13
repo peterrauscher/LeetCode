@@ -1,12 +1,12 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l, r = 0, len(nums) - 1
-        while l <= r:
-            middle = ((r - l) // 2) + l
-            if nums[middle] == target:
-                return middle
-            elif nums[middle] > target:
-                r = middle - 1
+        low, high = 0, len(nums) - 1
+        while low <= high:
+            mid = low + ((high - low) // 2)
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                high = mid - 1
             else:
-                l = middle + 1
+                low = mid + 1
         return -1
